@@ -1,0 +1,5 @@
+sources:
+  - provider: git
+    repository: https://github.com/pranavgawri/api-contracts
+    test:
+      - pet-store.yaml
