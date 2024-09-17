@@ -48,3 +48,15 @@ kotlin {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+tasks.register<JavaExec>("runContractTest") {
+    group = "verification"
+    description = "Runs the contract tests using Specmatic"
+
+    mainClass.set("com.example.petstore.ContractTestKt")
+    classpath = sourceSets["test"].runtimeClasspath
+
+    // Add these if you're using Kotlin
+    dependsOn("compileTestKotlin")
+    kotlin.sourceSets["test"].kotlin.srcDir("src/test/kotlin")
+}
