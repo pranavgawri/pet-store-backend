@@ -43,8 +43,9 @@ fun main() {
         "docker", "run",
         "-v", "${System.getProperty("user.dir")}/specmatic.yaml:/usr/src/app/specmatic.yaml",
         "-e", "HOST_NETWORK=host",
+        "--network", "host",
         "znsio/specmatic",
-        "test", "--host", "http://host.docker.internal", "--port", "8080"
+        "test", "--host", "http://localhost", "--port", "8080"
     ).start()
 
     // Capture and print Specmatic output
