@@ -60,3 +60,10 @@ tasks.register<JavaExec>("runContractTest") {
     dependsOn("compileTestKotlin")
     kotlin.sourceSets["test"].kotlin.srcDir("src/test/kotlin")
 }
+
+tasks.register("printVersions") {
+    doLast {
+        println("Gradle version: ${gradle.gradleVersion}")
+        println("Java version: ${System.getProperty("java.version")}")
+    }
+}
