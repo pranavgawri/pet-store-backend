@@ -1,0 +1,1 @@
+{"specmaticConfigPath":"/Users/pranavgawri/Work/experiments/pet-store-backend/specmatic.yaml","apiCoverage":[{"type":"git","repository":"https://github.com/pranavgawri/api-contracts","branch":null,"specification":"pet-store.yaml","serviceType":"HTTP","operations":[{"path":"/pets/{petid}","method":"GET","responseCode":200,"count":1,"coverageStatus":"covered"}]}]}
