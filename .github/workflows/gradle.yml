@@ -43,19 +43,22 @@ jobs:
       run: ./gradlew printVersions
 
     - name: Build with Gradle Wrapper
-      run: ./gradlew runContractTest
+      run: ./gradlew bootRun
+
+    - name: Contract Test using Specmatic
+      run: docker run -v "./specmatic.yaml:/usr/src/app/specmatic.yaml" -e HOST_NETWORK=host --network=host "znsio/specmatic" test --port=8080 --host=localhost
     
     - name: Run Specmatic Insights Github Build Reporter
       uses: znsio/specmatic-insights-build-reporter-github-action@v2.0.2
       with:
         github-token: ${{ secrets.GH_REPOSITORY_TOKEN }}
         org-id:  66e98ee05e232d36a28f7c6c
-        branch-ref: refs/heads/main
-        branch-name: main
+        branch-ref: ${{ github.ref }}
+        branch-name: ${{ github.ref_name }}
         build-id: ${{ github.run_id }}
-        repo-name: pet-store-backend
+        repo-name: ${{ github.event.repository.name }}
         repo-id: ${{ github.repository_id }}
-        repo-url: https://github.com/pranavgawri/pet-store-backend
+        repo-url: ${{ github.event.repository.html_url }}
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.

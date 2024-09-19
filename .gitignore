@@ -24,6 +24,9 @@ hs_err_pid*
 replay_pid*
 
 .gradle/*
-build/*
+build/classes
+build/kotlin
+build/resources
+buid/snapshot
 
 .DS_Store
